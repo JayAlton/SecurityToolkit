@@ -8,8 +8,17 @@ def main():
     subparsers.add_parser('hash', help='Run file integrity checker')
     subparsers.add_parser('logs', help='Parse logs')
     subparsers.add_parser('subenum', help='Enumerate subdomains')
+    
+    # Add options for the packet sniffer
+    sniff_parser = subparsers.add_parser('sniff', help='Sniff packets')
+    sniff_parser.add_argument('--forever', action='store_true', help='Run sniffer continuously')
+    sniff_parser.add_argument('--alert', type=str, help='Send email alert to this address')
+
+    # Vulnerability scan
+    subparsers.add_parser('vscan', help='Check for vulnerabilities')
 
     args = parser.parse_args()
+
     if args.command == 'scan':
         from portscanner.portscan import run
         run()
@@ -21,6 +30,12 @@ def main():
         run()
     elif args.command == 'subenum':
         from subdomain_enum.sub_enum import run
+        run()
+    elif args.command == 'sniff':
+        from packet_sniffer.sniffer import run
+        run(forever=args.forever, alert_email=args.alert)
+    elif args.command == 'vscan':
+        from vulnerability_scanner.vulnerscanner import run
         run()
     else:
         parser.print_help()
