@@ -1,0 +1,12 @@
+[Unit]
+Description=Python Security Toolkit Sniffer
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/jayalt/Documents/GitHub/SecurityToolkit/main.py sniff --forever --alert=email@example.com
+WorkingDirectory=/home/jayalt/Documents/GitHub/SecurityToolkit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
