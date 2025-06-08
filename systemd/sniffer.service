@@ -6,6 +6,8 @@ After=network.target
 ExecStart=/usr/bin/python3 /home/jayalt/Documents/GitHub/SecurityToolkit/main.py sniff --forever --alert=email@example.com
 WorkingDirectory=/home/jayalt/Documents/GitHub/SecurityToolkit
 Restart=always
+StandardOutput=append:/var/log/sniffer.log
+StandardError=append:/var/log/sniffer.err
 User=root
 
 [Install]
