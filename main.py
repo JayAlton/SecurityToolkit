@@ -14,6 +14,9 @@ def main():
     sniff_parser.add_argument('--forever', action='store_true', help='Run sniffer continuously')
     sniff_parser.add_argument('--alert', type=str, help='Send email alert to this address')
 
+    # Deep Packet inspection
+    subparsers.add_parser('dpi', help='Run Deep Packet Inspection sniffer')
+
     # Vulnerability scan
     subparsers.add_parser('vscan', help='Check for vulnerabilities')
 
@@ -34,6 +37,9 @@ def main():
     elif args.command == 'sniff':
         from packet_sniffer.sniffer import run
         run(forever=args.forever, alert_email=args.alert)
+    elif args.command == 'dpi':
+        from deep_packet_inspection.dpi import start_dpi
+        start_dpi()
     elif args.command == 'vscan':
         from vulnerability_scanner.vulnerscanner import run
         run()

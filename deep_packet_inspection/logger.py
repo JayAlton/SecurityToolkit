@@ -1,11 +1,12 @@
+import os
 from datetime import datetime
 
-# Log packet inspections
-def log_packet(proto, src, sport, dst, dport, payload):
-    # Format timestamp
+LOG_DIR = os.path.join(os.path.dirname(__file__), "..", "logs")
+os.makedirs(LOG_DIR, exist_ok=True)
+
+# Log only suspicious packets
+def log_alert(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    # Create log line
-    line = f"[{timestamp}] {proto} {src}:{sport} -> {dst}:{dport}"
-    # Print log to console
-    print(line)
-    # Future: write to rotating file log
+    log_entry = f"[{timestamp}] {message}\n"
+    with open(os.path.join(LOG_DIR, "alerts.log"), "a") as f:
+        f.write(log_entry)
