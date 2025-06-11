@@ -18,7 +18,7 @@ def main():
     subparsers.add_parser('dpi', help='Run Deep Packet Inspection sniffer')
 
     # Vulnerability scan
-    subparsers.add_parser('vscan', help='Check for vulnerabilities')
+    subparsers.add_parser('vulnscan', help='Check for vulnerabilities')
 
     args = parser.parse_args()
 
@@ -40,7 +40,7 @@ def main():
     elif args.command == 'dpi':
         from deep_packet_inspection.dpi import start_dpi
         start_dpi()
-    elif args.command == 'vscan':
+    elif args.command == 'vulnscan':
         from vulnerability_scanner.vulnerscanner import run
         run()
     else:
