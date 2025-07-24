@@ -17,17 +17,29 @@ A modular Python-based toolkit to automate common cybersecurity tasks like port 
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation and use with Python3
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/security-toolkit.git
-cd security-toolkit
+git clone https://github.com/JayAlton/SecurityToolkit.git
+cd SecurityToolkit
 
-### 2. Install Requirements
+### 2. Create Virtual Environment
+ 
+python3 -m venv .venv
+
+```Windows: 
+.\.venv\Script\activate
+
+```Linux:
+.venv/source/activate
+
+### 3. Install Requirements
 
 pip install -r requirements.txt
 
 Note: For packet sniffing you may need sudo
 
+### 4. Run Main Function
 
+python3 main.py
