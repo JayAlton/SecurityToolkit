@@ -25,7 +25,9 @@ git clone https://github.com/JayAlton/SecurityToolkit.git
 cd SecurityToolkit
 
 ### 2. Create Virtual Environment
- 
+
+Make sure python version is 3.11 to use this toolkit
+
 python3 -m venv .venv
 
 ```Windows: 
